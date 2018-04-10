@@ -1,0 +1,32 @@
+language: node_js
+node_js: stable
+
+# S: Build Lifecycle
+install:
+  - npm install
+
+#before_script:
+ # - npm install -g gulp
+
+script:
+  - hexo clean
+  - hexo g
+  - rm -rf ./dist
+  - gulp
+
+after_script:
+  - cd ./public
+  - git init
+  - git config user.name "sujinw"
+  - git config user.email "sujinw@qq.com"
+  - git add .
+  - git commit -m "Update docs"
+  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
+# E: Build LifeCycle
+
+branches:
+  only:
+    - blog-resource
+env:
+ global:
+   - GH_REF: github.com/CavinHuang/CavinHuang.github.io.git
