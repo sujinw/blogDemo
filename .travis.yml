@@ -21,7 +21,7 @@ after_script:
   - git config user.email "sujinw@qq.com"
   - git add .
   - git commit -m "Update docs"
-  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
+  - git push --force --quiet "https://${BLOG_TOKEN}@${GH_REF}" master:master
 # E: Build LifeCycle
 
 branches:
@@ -29,4 +29,4 @@ branches:
     - blog-resource
 env:
  global:
-   - GH_REF: github.com/CavinHuang/CavinHuang.github.io.git
+   - GH_REF: git@github.com:sujinw/sujinw.github.com.git
